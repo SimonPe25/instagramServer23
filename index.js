@@ -16,6 +16,14 @@ const PORT = process.env.PORT || 5000
 const DB_URL = "mongodb+srv://simon:987654321@cluster0.8pv5z.mongodb.net/IntagramDB?retryWrites=true&w=majority"
 
 app.use(express.json())
+app.get('https://frontend-for-instagram.herokuapp.com/home', function (req, res, next) {
+    res.json({msg: 'This is CORS-enabled for all origins!'})
+  })
+  
+  app.listen(80, function () {
+    console.log('CORS-enabled web server listening on port 80')
+  })
+
 app.use('/', router)
 
 
