@@ -6,20 +6,12 @@ import morgan from 'morgan';
 
 
 const app = express()
-
-const corsOptions ={
-    origin:'*', 
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200
-} 
-app.use(cors(corsOptions));
+app.use(cors())
 
 app.use(morgan('dev'))
 
-
 const PORT = process.env.PORT || 5000
 const DB_URL = "mongodb+srv://simon:987654321@cluster0.8pv5z.mongodb.net/IntagramDB?retryWrites=true&w=majority"
-
 
 app.use(express.json())
 app.use('/', router)
@@ -28,10 +20,6 @@ app.use('/', router)
 async function startApp() {
     try {
         await mongoose.connect(DB_URL, { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false })
-       
-
-
-
         app.listen(PORT, () => console.log('SERVER STARTED ON PORT ' + PORT))
 
     } catch (e) {
