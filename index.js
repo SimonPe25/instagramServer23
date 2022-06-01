@@ -14,15 +14,7 @@ const PORT = process.env.PORT || 5000
 const DB_URL = "mongodb+srv://simon:987654321@cluster0.8pv5z.mongodb.net/IntagramDB?retryWrites=true&w=majority"
 
 app.use(express.json())
-app.use(express.static('public'))
-app.get('/', function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.send('Hello World');
-  })
-  
-  app.listen(3000, function () {
-    console.log('alive');
-  })
+
 
 app.use('/', router)
 
